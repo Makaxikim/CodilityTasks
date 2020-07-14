@@ -13,6 +13,7 @@ public class BinaryGap {
                     maxGap = currentGap;
                 }
                 currentGap = 0;
+                startGap = true;
             } else {
                 if (startGap) {
                     currentGap++;
