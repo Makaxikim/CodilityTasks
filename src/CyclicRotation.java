@@ -42,7 +42,7 @@ In your solution, focus on correctness. The performance of your solution will no
 
 public class CyclicRotation {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(solution(new int[]{},3)));
+        System.out.println(Arrays.toString(solution(new int[]{}, 3)));
     }
 
     public static int[] solution(int[] A, int K) {
