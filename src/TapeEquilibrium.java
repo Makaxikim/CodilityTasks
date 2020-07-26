@@ -43,30 +43,27 @@ each element of array A is an integer within the range [−1,000..1,000].
 
 public class TapeEquilibrium {
     public static void main(String[] args) {
-        System.out.println(solution(new int[]{1, 1, 0, 1, 1}));
+        System.out.println(solution(new int[]{0, 0, 0, 1, 1}));
     }
 
     public static int solution(int[] A) {
-        int minDiff = 2001;
         int sum = 0;
-        int sum2 = 0;
-        for (int i = 1; i < A.length; i++) {
-            for (int j = 0; j < i; j++) {
-                sum += A[j];
-            }
-            for (int j = i; j < A.length; j++) {
-                sum2 += A[j];
-            }
-            int diff = sum - sum2;
-            diff = diff >= 0 ? diff : -diff;
-            if (diff < minDiff) {
+        for (int i = 0; i < A.length - 1; i++) {
+            sum += A[i];
+        }
+        sum -= A[A.length - 1];
+        int minDiff = sum >= 0 ? sum : -sum;
+        if (minDiff == 0)
+            return minDiff;
+        int diff;
+        for (int i = A.length - 2; i > 0; i--) {
+            sum -= (2 * A[i]);
+            diff = sum >= 0 ? sum : -sum;
+            if (minDiff > diff) {
                 minDiff = diff;
             }
-            if (minDiff == 0) {
+            if (minDiff == 0)
                 return minDiff;
-            }
-            sum = 0;
-            sum2 = 0;
         }
         return minDiff;
     }
